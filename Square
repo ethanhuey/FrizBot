@@ -1,8 +1,0 @@
-import create
-
-r = create.Create(3)
-r.toFullMode()
-for x in range(0, 4):
-	r.move(100,20)
-	r.turn(90, 10)
-
