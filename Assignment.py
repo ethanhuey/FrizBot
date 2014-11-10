@@ -9,7 +9,7 @@ for x in range(0, 4):
         r.turn(90, 10)
 
 #WallHit
-while(true):
+while True:
     sensors = robot.sensors([create.LEFT_BUMP, create.RIGHT_BUMP])
     if (sensors[create.LEFT_BUMP] == 1) or (sensors[create.RIGHT_BUMP] == 1):
         robot.stop()
