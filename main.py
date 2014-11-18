@@ -8,5 +8,5 @@ PORT_NUMBER = 3
 r = create.Create(PORT_NUMBER);
 
 def main(self):
-    initComms("username", "password") #change to actual user and pass
+    initComms("gyumii", "oauth:7wgwxf7aslj1yg8scopnpdpcz25xwg")
     #TODO

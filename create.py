@@ -157,7 +157,7 @@ def _toBinary( val, numbits ):
     """ prints numbits digits of val in binary """
     if numbits == 0:  return
     _toBinary( val>>1 , numbits-1 )
-    print((val & 0x01), end=' ')  # print least significant bit
+    print((val & 0x01), end = ' ')  # print least significant bit
 
 
 def _fromBinary( s ):
