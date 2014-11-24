@@ -8,21 +8,21 @@ class Netcom:
 		try:
 			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			s.connect(("irc.twitch.tv", 6667))
-			print s.receive()
+			receive(s)
 		except:
-			print "Failed to connect"
+			print ("Failed to connect")
 			sys.exit
 		#send login credentials
 		try: #not sure if try catch works here
 			s.send('NICK %s\n' %username)
 			s.send('PASS %s\n' %password)
-			print s.receive()
+			receive(s)
 		except:
-			print "Login Failed"
+			print ("Login Failed")
 			sys.exit
 		#join FrizBot chatroom
 		s.send('JOIN #frizbot\n')
-		print s.receive()
+		receive(s)
 		
 		#do nothing for now
 		closeComms()
@@ -30,20 +30,9 @@ class Netcom:
 	def closeComms():
 		s.close
 	
-	def receive():
-		if (MSGLEN > 2048):
-			data = None
-			dataRcvd = 0
-			while dataRcvd < MSGLEN:
-				data += s.recv(min(MSGLEN-dataRcvd, 2048) #?
-				if data == '':
-					raise RuntimeError("connection broken")
-				dataRcvd += len(data)
-		else: 
-			return s.recv(MSGLEN)
-		
-		
-		
-		
-		
-		
+	def receive(s):
+                while True:
+                        data += s.recv(2048);
+                        if data == "":
+                                break
+                print (data)
