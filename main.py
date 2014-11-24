@@ -7,6 +7,6 @@ import Netcom
 
 #r = create.Create(PORT_NUMBER);
 
-def main(self):
-    initComms("gyumii", "oauth:7wgwxf7aslj1yg8scopnpdpcz25xwg")
-    #TODO
+comm = Netcom.Netcom()
+comm.initComms("gyumii", "oauth:7wgwxf7aslj1yg8scopnpdpcz25xwg")
+#TODO
