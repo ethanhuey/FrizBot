@@ -7,20 +7,23 @@ class Netcom:
                 #connect to chat server
                 try:
                         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                        s.settimeout(None)
+                        print("Trying irc.twitch.tv...")
                         s.connect(("irc.twitch.tv", 6667))
-                        #self.recv()
+                        print("Connected to irc.twitch.tv")
                 except:
                         sys.exit("Failed to connect")
                 #send login credentials
                 try:
-                        s.send(b'NICK %s\n' %username)
-                        s.send(b'PASS %s\n' %password)
+                        s.sendall(b'PASS %s\n' %password)
+                        s.sendall(b'NICK %s\n' %username)
                         #self.receive(s)
                 except:
                         sys.exit("Login failed")
                 #join FrizBot chatroom
                 s.send(b'JOIN #frizbot8\n')
-                self.receive(s)
+                # self.receive(s)
+                print (s.recv(1024))
                 
                 #do nothing for now
                 closeComms()
