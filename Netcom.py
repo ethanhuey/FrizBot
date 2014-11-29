@@ -14,24 +14,28 @@ class Netcom:
                 except:
                         sys.exit("Failed to connect")
                 #send login credentials
+                """
                 try:
-                        s.sendall(b'PASS %s\n' %password)
-                        s.sendall(b'NICK %s\n' %username)
+                        s.sendall(('PASS %s\n' %password).encode(utf_8))
+                        s.sendall(('NICK %s\n' %username).encode(utf_8))
                         #self.receive(s)
                 except:
                         sys.exit("Login failed")
+                """
+                s.sendall(('PASS %s\n' %password).encode('utf8', 'strict'))
+                s.sendall(('NICK %s\n' %username).encode('utf8', 'strict'))
                 #join FrizBot chatroom
                 s.send(b'JOIN #frizbot8\n')
                 # self.receive(s)
                 print (s.recv(1024))
                 
                 #do nothing for now
-                closeComms()
-		
+                s.close()
+        
         def closeComms(self):
                 s.close
-
-        def receive(self, s):
+        
+        def receive(self):
                 data = s.recv(4096)
                 """
                 data_received = 0
