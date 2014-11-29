@@ -4,6 +4,8 @@ import Netcom
 import Driver
 import threading
 
+robot = create.Create(3)
+robot.toFullMode()
 
 comm = Netcom.Netcom()
 proc = Driver.Processor()
