@@ -3,8 +3,8 @@ class Processor:
 	commands = ["left", "forward", "forward", "right"]
 	def process(self, robot):
 		while True:
-			if(len(commands) != 0):
-				current = commands.pop(0)
+			if(len(self.commands) != 0):
+				current = self.commands.pop(0)
 				if(current == "left"):
 					robot.turn(90, 45)
 					robot.go(20,0)
@@ -17,7 +17,7 @@ class Processor:
 					robot.playSong( [(88,8),(88,16),(88,16),(84,8),(88,16),(91,32),(79,16)] )
 	
 			else:
-				commands.append("sing")
+				self.commands.append("sing")
 				
 
 class Keeper:
