@@ -3,7 +3,7 @@
 
 class Processor:
 	commands = ["left", "forward", "forward", "right"]
-	def process():
+	def process(robot):
 		while True:
 			if(len(commands) != 0):
 				current = commands.pop(0)
@@ -21,7 +21,7 @@ class Processor:
 				
 
 class Keeper:
-	def keepsafe():
+	def keepsafe(robot):
 		while True:
 			sensors = robot.sensors([create.LEFT_BUMP, create.RIGHT_BUMP, create.CLIFF_FRONT_LEFT, create.CLIFF_FRONT_RIGHT, create.CLIFF_RIGHT, create.CLIFF_LEFT])
 			if (sensors[create.LEFT_BUMP] == 1) or (sensors[create.RIGHT_BUMP] == 1) or (sensors[create.CLIFF_FRONT_LEFT] == 1) or (sensors[create.CLIFF_FRONT_RIGHT] == 1) or (sensors[create.CLIFF_RIGHT] == 1) or (sensors[create.CLIFF_LEFT] == 1):
