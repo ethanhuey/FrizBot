@@ -8,11 +8,7 @@ r = create.Create(3)
 r.toFullMode()
 
 comm = Netcom.Netcom()
-<<<<<<< HEAD
+
 comm.initComms("gyumii", "oauth:tvc5odguk60rr4d92924ix5ewl6h8bq")
 #TODO
-=======
 
-comm.initComms("gyumii", "oauth:i3vra1n8554xvy4ox870rnhnx10cko")
-
->>>>>>> origin
