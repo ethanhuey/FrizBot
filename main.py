@@ -9,6 +9,6 @@ r.toFullMode()
 
 comm = Netcom.Netcom()
 
-comm.initComms("gyumii", "oauth:tvc5odguk60rr4d92924ix5ewl6h8bq")
+comm.initComms("gyumii", "oauth:tvc5odguk60rr4d92924ix5ewl6h8bq", r)
 #TODO
 
