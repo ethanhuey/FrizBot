@@ -37,7 +37,7 @@ class Netcom:
 
         def receiveMessages(self, s):
                 message = s.recv(1024).decode('utf8', 'strict')
-                m = re.match((r'^.*:([a-zA-Z0-9]*)\![a-zA-Z0-9]*@[a-zA-Z0-9]*\.tmi\.twitch\.tv PRIVMSG #frizbot8 :([a-zA-Z0-9]*).*$'), message)
+                m = re.match((r'^.*:([a-zA-Z0-9]*)\![a-zA-Z0-9]*@[a-zA-Z0-9]*\.tmi\.twitch\.tv PRIVMSG #frizbot8 :(left|right|move|sing).*$'), message)
                 if m:
                         print (m.group(1)+': '+m.group(2)+'\n', end="")
                         return (m.group(2))
