@@ -1,6 +1,7 @@
 import socket
 import sys
 import re
+import Driver
 
 class Netcom:
         s = None
@@ -25,9 +26,12 @@ class Netcom:
                 #join FrizBot chatroom
                 s.send(('JOIN #frizbot8\n').encode('utf8', 'strict'))
                 print (s.recv(1024))
+                proc = Driver.Processor()
                 try:
                         while True:
-                                print (self.receiveMessages(s), end="")
+                                message = self.receiveMessages(s)
+                                proc.process(message)
+                                print (message, end="")
                 except KeyboardInterrupt:
                         self.closeComms()
                         sys.exit("\nKeyboard Interrupt")
