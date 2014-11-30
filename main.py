@@ -1,12 +1,18 @@
 import create
 import time
 import Netcom
+import Driver
+import threading
 
-#PORT_NUMBER = 3 
-#PORT_NUMBER = "dev/tty.KeySerial1"
-
-#r = create.Create(PORT_NUMBER);
+r = create.Create(3)
+r.toFullMode()
 
 comm = Netcom.Netcom()
+<<<<<<< HEAD
 comm.initComms("gyumii", "oauth:tvc5odguk60rr4d92924ix5ewl6h8bq")
 #TODO
+=======
+
+comm.initComms("gyumii", "oauth:i3vra1n8554xvy4ox870rnhnx10cko")
+
+>>>>>>> origin
