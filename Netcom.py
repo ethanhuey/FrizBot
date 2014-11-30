@@ -5,7 +5,7 @@ import Driver
 
 class Netcom:
         s = None
-        def initComms(self, username, password):
+        def initComms(self, username, password, robot):
                 #connect to chat server
                 try:
                         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -30,7 +30,7 @@ class Netcom:
                 try:
                         while True:
                                 message = self.receiveMessages(s)
-                                proc.process(message)
+                                proc.process(robot, message)
                                 print (message, end="")
                 except KeyboardInterrupt:
                         self.closeComms()
