@@ -31,7 +31,6 @@ class Netcom:
                         while True:
                                 message = self.receiveMessages(s)
                                 proc.process(robot, message)
-                                print (message, end="")
                 except KeyboardInterrupt:
                         self.closeComms()
                         sys.exit("\nKeyboard Interrupt")
@@ -45,6 +44,7 @@ class Netcom:
                 m = re.match((r'^.*:([a-zA-Z0-9]*)\![a-zA-Z0-9]*@[a-zA-Z0-9]*\.tmi\.twitch\.tv PRIVMSG #frizbot8 :(.*).*$'), message)
                 
                 if m:
-                        return (m.group(1)+': '+m.group(2)+'\n')
+                        print (m.group(1)+': '+m.group(2)+'\n', end="")
+                        return (m.group(2))
                 return ""
                 
