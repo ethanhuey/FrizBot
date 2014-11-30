@@ -8,5 +8,5 @@ import Netcom
 #r = create.Create(PORT_NUMBER);
 
 comm = Netcom.Netcom()
-comm.initComms("gyumii", "oauth:i3vra1n8554xvy4ox870rnhnx10cko")
+comm.initComms("gyumii", "oauth:tvc5odguk60rr4d92924ix5ewl6h8bq")
 #TODO

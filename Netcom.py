@@ -1,5 +1,6 @@
 import socket
 import sys
+import re
 
 class Netcom:
         s = None
@@ -12,39 +13,34 @@ class Netcom:
                         s.connect(("irc.twitch.tv", 6667))
                         print("Connected to irc.twitch.tv")
                 except:
+                        self.closeComms()
                         sys.exit("Failed to connect")
                 #send login credentials
-                """
                 try:
-                        s.sendall(('PASS %s\n' %password).encode(utf_8))
-                        s.sendall(('NICK %s\n' %username).encode(utf_8))
-                        #self.receive(s)
+                        s.sendall(('PASS %s\n' %password).encode('utf8', 'strict'))
+                        s.sendall(('NICK %s\n' %username).encode('utf8', 'strict'))
                 except:
+                        self.closeComms()
                         sys.exit("Login failed")
-                """
-                s.sendall(('PASS %s\n' %password).encode('utf8', 'strict'))
-                s.sendall(('NICK %s\n' %username).encode('utf8', 'strict'))
                 #join FrizBot chatroom
-                s.send(b'JOIN #frizbot8\n')
-                # self.receive(s)
+                s.send(('JOIN #frizbot8\n').encode('utf8', 'strict'))
                 print (s.recv(1024))
-                
-                #do nothing for now
-                s.close()
+                try:
+                        while True:
+                                print (self.receiveMessages(s), end="")
+                except KeyboardInterrupt:
+                        self.closeComms()
+                        sys.exit("\nKeyboard Interrupt")
         
         def closeComms(self):
-                s.close
+                if self.s:
+                        self.s.close()
         
-        def receive(self):
-                data = s.recv(4096)
-                """
-                data_received = 0
-                while True:
-                        currentblock = s.recv(min(socket.CMSG_LEN(4096) - data_received, 4096))
-                        if currentblock == "":
-                                break
-                        data += currentblock
-                        data_received += len(currentblock)
-                """
-                print (data)
+        def receiveMessages(self, s):
+                message = s.recv(1024).decode('utf8', 'strict')
+                m = re.match((r'^.*:([a-zA-Z0-9]*)\![a-zA-Z0-9]*@[a-zA-Z0-9]*\.tmi\.twitch\.tv PRIVMSG #frizbot8 :(.*).*$'), message)
+                
+                if m:
+                        return (m.group(1)+': '+m.group(2)+'\n')
+                return ""
                 
