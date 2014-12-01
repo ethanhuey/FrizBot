@@ -11,7 +11,7 @@ class Netcom:
                         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         s.settimeout(None)
                         print("Trying irc.twitch.tv...")
-                        s.connect(("irc.twitch.tv", 80))
+                        s.connect(("irc.twitch.tv", 443))
                         print("Connected to irc.twitch.tv")
                 except:
                         self.closeComms()
